@@ -18,15 +18,11 @@ const Auth = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let data;
             if (newAccount) {
-                // create account
-                data = await authService.createUserWithEmailAndPassword(email, password);
+                await authService.createUserWithEmailAndPassword(email, password);
             } else {
-                // Login
-                data = await authService.signInWithEmailAndPassword(email, password)
+                await authService.signInWithEmailAndPassword(email, password)
             }
-            console.log(data)
         } catch(err) {
             setError(err.message);
         }
@@ -37,14 +33,17 @@ const Auth = () => {
     }
     const onSocialClick = async (e) => {
         const {target: {name}} = e;
-        let provider;
-        if (name === 'google') {
-            provider = new firebaseInstance.auth.GoogleAuthProvider();
-        } else if (name === 'github') {
-            provider = new firebaseInstance.auth.GithubAuthProvider();
+        try {
+            let provider;
+            if (name === 'google') {
+                provider = new firebaseInstance.auth.GoogleAuthProvider();
+            } else if (name === 'github') {
+                provider = new firebaseInstance.auth.GithubAuthProvider();
+            }
+            await authService.signInWithPopup(provider);
+        } catch (err) {
+            setError(err.message)
         }
-        const data = await authService.signInWithPopup(provider);
-        console.log(data)        
     }
 
     return (
