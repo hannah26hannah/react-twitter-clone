@@ -14,9 +14,13 @@ const Tweet = ({tweetObj, isOwner}) => {
     }
     const onDeleteClick = async (e) => {
         const ok = window.confirm('Are you sure you want to delete this tweet?')
+        
         if (ok) {
             await dbService.doc(`tweets/${tweetObj.id}`).delete();
-            await storageService.refFromURL(tweetObj.attachmentUrl).delete();
+            if (tweetObj.attachmentUrl !== '') {
+                await storageService.refFromURL(tweetObj.attachmentUrl).delete();
+            }
+            
         }
     }
     const onSubmit = async (e) => {

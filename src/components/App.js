@@ -10,12 +10,15 @@ function App() {
     useEffect(() => {
         authService.onAuthStateChanged((user) => {
             if (user) {
-                setUserObj({
-                    displayName: user.displayName,
-                    uid: user.uid,
-                    updateProfile: (args) => user.updateProfile(args)
-                });
+                setUserObj(user)
+                // setUserObj({
+                //     displayName: user.displayName,
+                //     uid: user.uid,
+                //     updateProfile: (args) => user.updateProfile(args)
+                // });
                 setIsLoggedIn(true)
+            } else {
+                setUserObj(null)
             }
             setInit(true)
         })
@@ -24,6 +27,7 @@ function App() {
 
     const refreshuser = () => {
         const user = authService.currentUser;
+        // setUserObj(Object.assign({}, user)); This will throw an error in Updating User Profile 
         setUserObj({
             displayName: user.displayName,
             uid: user.uid,
@@ -32,7 +36,7 @@ function App() {
     }
     return (
         <>
-            {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} refreshuser={refreshuser} /> : 'Initializing ...'}
+            {init ? <AppRouter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} userObj={userObj} refreshuser={refreshuser} /> : 'Initializing ...'}
             <footer>&copy; ClonedTwitter {new Date().getFullYear()}</footer>
         </>
     ) 
