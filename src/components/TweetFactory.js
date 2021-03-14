@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { dbService, storageService } from 'fBase'
 import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const TweetFactory = ({ userObj }) => {
     const [tweet, setTweet] = useState('');
@@ -46,16 +48,20 @@ const TweetFactory = ({ userObj }) => {
         setAttachment('');
     }
     return (
-        <form onSubmit={onSubmit}>
-                <input type='text' placeholder="What's on Your Mind?" value={tweet} maxLength={120} onChange={onChange} />
-                <input type='file' accept='image/*' onChange={onFileChange} />
-
-                <input type='submit' value='tweet' />
-                {attachment && <div>
-                    <img src={attachment} alt='Profile' width='50px' height='50px' />
-                    <button onClick={onClearAttachement}>Clear Photo</button>
-                </div>
-                }
+        <form onSubmit={onSubmit} className='factoryContainer'>
+            <section className='factoryInput__container'>
+                <input type='text' placeholder="What's on Your Mind?" value={tweet} maxLength={120} onChange={onChange} className='factoryInput' />
+                <input type='submit' value='send Tweet' className='factoryInput factorySubmit'/>
+            </section>
+            <section className='factoryAttachment__container'>
+                <input id='attach-file' type='file' accept='image/*' onChange={onFileChange} />
+                <label htmlFor='attach-file'><FontAwesomeIcon icon={faPlus} />Add Photo</label>
+                {attachment &&
+                <>
+                    <img src={attachment} alt='Profile' width='50px' height='50px' className='attachmentImg' />
+                    <button onClick={onClearAttachement} className='factoryInput attachmentClear'>Clear Photo</button>
+                </>}
+            </section>
         </form>
     )
 }

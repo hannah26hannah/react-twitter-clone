@@ -1,5 +1,33 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
+$breakpoint-mobile : 335px;
+$breakpoint-tablet : 758px;
+$breakpoint-desktop : 1024px;
+
+@mixin mobile {
+    @media (max-width : #{$breakpoint-mobile - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$breakpoint-mobile}) and (max-width : #{$breakpoint-tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+        @content;
+    }
+}
+
+@mixin bigScreen {
+    @media (min-width: #{$breakpoint-desktop}) {
+        @content;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,6 +38,10 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh
     /* todo : darkMode */
 }
 
@@ -33,4 +65,344 @@ input {
     all: unset;
     appearance: none;
     box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Navigation */
+.Navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    border-bottom: 1px solid white;
+    width: 100%;
+    // background-color: yellowgreen;
+    ul {
+        height: 100%;
+        padding: 0 1rem 0 1rem;
+        display: flex;    
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* Home */
+.homeWrapper {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: calc(100vh - 6rem);
+    
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    overflow: auto;
+    .factoryContainer {
+        display: flex;
+        flex-direction: column;
+        .factoryInput {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 1);
+            margin-bottom: 1rem;
+            font-size: 12px;
+            color: black;
+            box-sizing: border-box;
+        }
+        .factoryInput__container {
+            display: flex;
+            flex-direction: column;
+
+            .factorySubmit {
+                text-align: center;
+                background-color: #04aaff;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        .factoryAttachment__container {
+            display: flex;
+            flex-direction: column;
+            #attach-file {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+                &:focus + label {
+                    cursor: pointer;
+                }
+            }
+            #attach-file + label {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border-radius: 30px;
+                background-color: white;
+                text-decoration: none;
+                color: #04aaff;
+                text-align: center;
+                margin: 1rem 0 1rem 0;
+                font-size: 12px;
+                svg {
+                    margin-right: 1rem;
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            
+            .attachmentImg {
+                margin: 0 auto;
+                width: 200px;
+                height: auto;
+                object-fit: contain;
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            
+
+        }
+
+        
+    }
+    .displayContainer {}
+}
+
+
+/* Profile */
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 6rem);
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    .profileContainer {
+        .profileInput {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 1);
+            margin-bottom: 1rem;
+            font-size: 12px;
+            color: black;
+            box-sizing: border-box;
+        }
+        .profileSumbit {
+            text-align: center;
+            background-color: #04aaff;
+            color: white;
+            cursor: pointer;
+        }
+        .profileError {
+            color: tomato;
+            text-align: center;
+            font-weight: 500;
+            font-size: 12px;
+        }
+    }
+    .profileBtn {
+        width: 100%;
+        background: tomato;
+        cursor: pointer;
+        border-radius: 30px;
+        border: none;
+        padding: 10px;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+/* Auth */
+
+.authWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 3rem);
+    margin-bottom: 3rem;
+    padding: 1rem;
+    .authForm {
+        padding-top: 1rem;
+        .authInput {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 1);
+            margin-bottom: 1rem;
+            font-size: 12px;
+            color: black;
+            box-sizing: border-box;
+        }
+        .authSumbit {
+            text-align: center;
+            background-color: #04aaff;
+            color: white;
+            cursor: pointer;
+        }
+        .authError {
+            color: tomato;
+            text-align: center;
+            font-weight: 500;
+            font-size: 12px;
+        }
+    }
+    .authSwitch {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 30px;
+        background-color: white;
+        text-decoration: none;
+        color: #04aaff;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-bottom: 50px;
+        font-size: 12px;
+    }
+    .authBtns {
+        display: block;
+        width: 100%;
+        .authBtn {
+            width: 100%;
+            background: white;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            svg {
+                margin-right: 1rem;
+            }
+        }
+        .authBtn:last-child {
+            margin-top: 10px;
+        }
+    }
+      
+    
+}
+
+
+
+  
+  /* AuthForm */
+.twitterIcon {
+    color: #04aaff;
+}
+
+
+
+
+  
+
+  
+
+
+
+
+
+/* footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 0 1rem;
+    border-top: 1px solid white;
+    width: 100%;
+
+    ul {
+        display: flex;
+        width: 40%;
+        justify-content: space-around;
+    }
+}
+
+@include mobile {
+    .homeWrapper,
+    .profileWrapper {
+        height: calc(100vh - 8rem);
+    }
+    .authWrapper {
+        height: calc(100vh - 5rem);
+    }
+    .homeWrapper,
+    .profileWrapper, 
+    .authWrapper
+    {
+        margin-bottom: 5rem;
+    }
+    
+    .footer {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 5rem;
+    }
+}
+@include tablet {
+    
+    .factoryInput,
+    #attach-file + label {
+        max-width: 335px;
+        
+    }
+    
+    .footer {
+        flex-direction: row;
+    }
+}
+@include desktop {
+    .factoryInput,
+    #attach-file + label {
+        max-width: 335px;
+        
+    }
+    .footer {
+        flex-direction: row;
+    }
+}
+@include bigScreen  {
+    .factoryInput,
+    #attach-file + label {
+        max-width: 335px;
+    }
+    .footer {
+        flex-direction: row;
+    }
 }

@@ -4,7 +4,6 @@ import { dbService } from 'fBase';
 import React, { useEffect, useState } from 'react';
 
 const Home = ({ userObj }) => {
-    
     const [tweets, setTweets] = useState([]);
     
     const getMyTweets = async (e) => {
@@ -21,14 +20,14 @@ const Home = ({ userObj }) => {
     }, [])
 
     return(
-        <div>
+        <main className='homeWrapper'>
             <TweetFactory userObj={userObj} />
-            <div>
+            <section className='displayContainer'>
                 {tweets.map(tweet => 
                     <Tweet tweetObj={tweet} key={tweet.id} isOwner={tweet.creatorId === userObj.uid} />
                 )}
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default Home;

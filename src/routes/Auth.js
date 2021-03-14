@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { authService, firebaseInstance } from 'fBase';
 import AuthForm from 'components/AuthForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Auth = () => {
     const [error, setError] = useState('');
@@ -20,11 +22,16 @@ const Auth = () => {
     }
 
     return (
-        <div>
+        <div className='authWrapper'>
+            <FontAwesomeIcon icon={faTwitter} size='3x' className='twitterIcon'/>
             <AuthForm error={error} setError={setError} />
-            <div>
-                <button name='google' onClick={onSocialClick}>Continue With Google</button>
-                <button name='github' onClick={onSocialClick}>Continue With Github</button>
+            <div className='authBtns'>
+                <button className='authBtn' name='google' onClick={onSocialClick}>
+                    <FontAwesomeIcon icon={faGoogle} size='lg'/>
+                    Continue With Google</button>
+                <button className='authBtn' name='github' onClick={onSocialClick}>
+                    <FontAwesomeIcon icon={faGithub} size='lg' />
+                    Continue With Github</button>
             </div>
         </div>
     )

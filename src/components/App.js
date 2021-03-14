@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import AppRouter from 'components/Router'
 import { authService } from 'fBase';
+import Footer from './Footer';
 
 function App() {
     const [init, setInit] = useState(false);
@@ -37,7 +38,7 @@ function App() {
     return (
         <>
             {init ? <AppRouter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} userObj={userObj} refreshuser={refreshuser} /> : 'Initializing ...'}
-            <footer>&copy; ClonedTwitter {new Date().getFullYear()}</footer>
+            <Footer />
         </>
     ) 
 }
