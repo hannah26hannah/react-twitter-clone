@@ -51,7 +51,7 @@ const TweetFactory = ({ userObj }) => {
         <form onSubmit={onSubmit} className='factoryContainer'>
             <section className='factoryInput__container'>
                 <input type='text' placeholder="What's on Your Mind?" value={tweet} maxLength={120} onChange={onChange} className='factoryInput' />
-                <input type='submit' value='send Tweet' className='factoryInput factorySubmit'/>
+                <input type='submit' value='Tweet' className='factoryInput factorySubmit'/>
             </section>
             <section className='factoryAttachment__container'>
                 <input id='attach-file' type='file' accept='image/*' onChange={onFileChange} />
