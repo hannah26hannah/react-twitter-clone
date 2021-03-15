@@ -7,6 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 const TweetFactory = ({ userObj }) => {
     const [tweet, setTweet] = useState('');
     const [attachment, setAttachment] = useState('');
+    const [error, setError] = useState('');
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -26,11 +27,19 @@ const TweetFactory = ({ userObj }) => {
         await dbService.collection('tweets').add(tweetObj);
         setTweet('');
         setAttachment('');
+        setError('');
     }
 
     const onChange = (e) => {
+        setError('');
         const {target: { value }} = e;
         setTweet(value);
+    }
+    const onKeyUp = (e) => {
+        const {target: { value }} = e;
+        if (value.length >= 120) {
+            setError('120자 이내로 작성해주세요.')
+        }
     }
 
     const onFileChange = (e) => {
@@ -47,11 +56,14 @@ const TweetFactory = ({ userObj }) => {
     const onClearAttachement = () => {
         setAttachment('');
     }
+
+    
     return (
         <form onSubmit={onSubmit} className='factoryContainer'>
             <section className='factoryInput__container'>
-                <input type='text' placeholder="What's on Your Mind?" value={tweet} maxLength={120} onChange={onChange} className='factoryInput' />
-                <input type='submit' value='Tweet' className='factoryInput factorySubmit'/>
+                <input type='text' placeholder="What's on Your Mind?" value={tweet} maxLength={120}  onKeyUp={onKeyUp} onChange={onChange} className='factoryInput' />
+                {error && <span className='error'>{error}</span>}
+                <input type='submit' value='Tweet' className='factoryInput submitBtn'/>
             </section>
             <section className='factoryAttachment__container'>
                 <input id='attach-file' type='file' accept='image/*' onChange={onFileChange} />

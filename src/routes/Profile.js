@@ -52,13 +52,13 @@ const Profile = ({ userObj, refreshuser, setIsLoggedIn }) => {
 
     
     return (
-    <div className='profileWrapper wrapper'>
-        <form onSubmit={onSubmit} className='profileContainer'>
-            <input type='text' placeholder='Display Name' value={newDisplayName} onChange={onChange} className='profileInput' />
-            <input type='submit' value='Update Profile' className='profileInput profileSumbit'/>
-            {error && <span className='profileError'>{error}</span>}
+    <main className='profileWrapper wrapper'>
+        <form onSubmit={onSubmit}>
+            <input type='text' placeholder='Display Name' value={newDisplayName} onChange={onChange} className='factoryInput' />
+            <input type='submit' value='Update Profile' className='factoryInput submitBtn'/>
+            {error && <span className='error'>{error}</span>}
         </form>
         <button className='profileBtn' onClick={onLogOutClick}>Log Out</button>
-    </div>)
+    </main>)
 } 
 export default Profile;

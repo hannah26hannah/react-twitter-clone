@@ -22,7 +22,7 @@ const Auth = () => {
     }
 
     return (
-        <div className='authWrapper wrapper'>
+        <main className='authWrapper wrapper'>
             <div className='iconWrapper'>
                 <FontAwesomeIcon icon={faTwitter} size='3x' className='twitterIcon'/>
             </div>
@@ -35,8 +35,10 @@ const Auth = () => {
                     <FontAwesomeIcon icon={faGithub} size='lg' />
                     Continue With Github</button>
             </div>
-        </div>
+        </main>
     )
 }
 
 export default Auth;
+
+

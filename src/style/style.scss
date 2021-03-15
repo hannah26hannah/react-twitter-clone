@@ -1,12 +1,11 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+@import './navigation';
+@import './breakpoints';
+@import './footer';
+@import './variable';
+@import './responsive';
+@import './mixin';
 
-$breakpoint-mobile : 335px;
-$breakpoint-tablet : 758px;
-$breakpoint-desktop : 1024px;
-
-
-$primary-blue : #04aaff;
-$primary-red : #ff6347;
 
 html {
     --bg: #FBFAF8;
@@ -23,54 +22,30 @@ html.transition * {
   transition-delay: 0 !important;
 }
 
-@mixin mobile {
-    @media (max-width : #{$breakpoint-mobile - 1px}) {
-        @content;
-    }
-}
-
-@mixin tablet {
-    @media (min-width: #{$breakpoint-mobile}) and (max-width : #{$breakpoint-tablet - 1px}) {
-        @content;
-    }
-}
-
-@mixin desktop {
-    @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
-        @content;
-    }
-}
-
-@mixin bigScreen {
-    @media (min-width: #{$breakpoint-desktop}) {
-        @content;
-    }
-}
 
 * {
     box-sizing: border-box;
 }
 
+#root {
+    margin: 0 auto;
+}
+
 body {
-    background-color: var(--bg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
-    color: var(--font);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     height: 100vh;
+    @include flexCol;
+    @include bgFont;
 }
-
 
 .initial {
     text-align: center;
     font-size: larger;
 }
 button {
-    background-color: var(--bg);
-    color: var(--font);
+    @include bgFont;
 }
 
 a {
@@ -91,409 +66,189 @@ input {
 .container {
     width: 100%;
     max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
+    @include flexCol;
 }
-
-/* Navigation */
-.Navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3rem;
-    border-bottom: 1px solid var(--font);
-    width: 100%;
-    ul {
-        position: relative;
-        height: 100%;
-        padding: 0 1rem 0 1rem;
-        display: flex;    
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        li:last-child {
-            .darkModeBtn {
-                border: none;
-                padding: 6px;
-                border-radius: 50%;
-                border: 1px solid var(--font);
-                margin-left: 2rem;
-            } 
-        }
-    }
-}
-
-
 
 
 /* Common */
+.error__margin {
+    @include error;
+    margin-bottom: 1rem;
+}
+.error {
+    @include error;
+}
+
+.submitBtn {
+    @include submitBtn;
+}
+
+
 .factoryInput {
     display: inline-block;
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-    border-radius: 30px;
-    border: 1px solid lightgray;
-    background-color: var(--bg);
-    margin-bottom: 1rem;
-    font-size: 12px;
-    color: var(--font);
-    box-sizing: border-box;
+    @include basicInput;
+    @include border;
+    @include bgFont;
 }
-.factorySubmit {
-    text-align: center;
-    background-color: $primary-blue;
-    color: var(--font);
-    cursor: pointer;
-}
+
 .factoryCancle {
     background-color: $primary-red;
 }
-
-#root {
-    margin: 0 auto;
-}
-
-/* Home */
 
 .wrapper {
     width: 100vw;
     height: calc(100vh - 6rem);
     padding: 3rem 2rem;
-    
     overflow-y: auto;
-    .factoryContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+}
+
+/* Home */
+.factoryContainer {
+    @include flexCol;
+    width: 100%;
+    
+    .factoryInput__container {
+        @include flexCol;
         width: 100%;
-        
-        .factoryInput__container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-        }
-        
-        .factoryAttachment__container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-            #attach-file {
-                width: 0.1px;
-                height: 0.1px;
-                opacity: 0;
-                overflow: hidden;
-                position: absolute;
-                z-index: -1;
-                &:focus + label {
-                    cursor: pointer;
-                }
-            }
-            #attach-file + label {
-                display: block;
-                width: 100%;
-                padding: 10px;
-                border-radius: 30px;
-                background-color: $primary-blue;
-                text-decoration: none;
-                color: var(--font);
-                text-align: center;
-                margin: 1rem 0 1rem 0;
-                font-size: 12px;
-                svg {
-                    margin-right: 1rem;
-                }
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            
-            .attachmentImg {
-                margin: 0 auto;
-                width: 200px;
-                height: auto;
-                object-fit: contain;
-                border-radius: 30px;
-                margin-bottom: 1rem;
-            }
-            
-            
-
-        }
-
-        
     }
-    .displayContainer {
+    
+    .factoryAttachment__container {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .tweet {
-            width: 100%;
-            .tweetContainer {
-                width: 100%;
-                border: 1px solid lightgray;
-                background: var(--bg);
-                color: var(--font);
-                border-radius: 30px;
-                padding: 10px;
-                margin-bottom: 1rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                padding: 1rem;
-                .tweetEdit {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    .editInput {
-                        width: 100%;
-                        padding: 2px;
-                        border: 1px solid lightgray;
-                    }
-                }
+        @include flexCol;
 
-                .factoryImg {
-                    width: 90%;
-                    height: auto;
-                    border-radius: 30px;
-                    margin: 10px auto;
+        #attach-file {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+            
+            &:focus + label {
+                cursor: pointer;
+            }
+            & + label {
+               display: block; 
+               width: 100%;
+               text-decoration: none;
+               margin: 1rem 0 1rem 0;
+               @include btn;
+               @include submitBtn;
+               svg { margin-right: 1rem; }
+            }
+        }
+
+        .attachmentImg {
+            margin: 0 auto;
+            width: 200px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.displayContainer {
+    width: 100%;
+    @include flexCol;
+    .tweet {
+        width: 100%;
+        .tweetContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            border-radius: 30px;
+            padding: 10px;
+            margin-bottom: 1rem;            
+            padding: 1rem;
+            @include border;
+            @include bgFont;
+            .tweetEdit {
+                @include flexCol;
+                .editInput {
+                    width: 100%;
+                    padding: 2px;
+                    @include border;
                 }
-                .factoryBtns {
-                    align-self: flex-end;
-                    .factoryBtn {
-                        border: none;
-                        border-radius: 50%;
-                        padding: 7px;
-                        width: 30px;
-                        height: 30px;
-                    }
-                    .editBtn {
-                        background-color: $primary-blue;
-                        margin-right: 10px;
-                    }
-                    .deleteBtn {
-                        background-color: tomato;
-                    }
-                    
+            }
+
+            .factoryImg {
+                width: 90%;
+                height: auto;
+                border-radius: 30px;
+                margin: 10px auto;
+            }
+            .factoryBtns {
+                align-self: flex-end;
+                .factoryBtn {
+                    border: none;
+                    border-radius: 50%;
+                    padding: 7px;
+                    width: 30px;
+                    height: 30px;
+                }
+                .editBtn {
+                    background-color: $primary-blue;
+                    margin-right: 10px;
+                }
+                .deleteBtn {
+                    background-color: tomato;
                 }
             }
         }
-        
     }
 }
 
 
  /* Profile */
 .profileWrapper {
-    .profileContainer {
-        .profileInput {
-            display: block;
-            text-align: center;
-            width: 100%;
-            padding: 10px;
-            border-radius: 30px;
-            background-color: var(--bg);
-            border: 1px solid lightgray;
-            margin-bottom: 1rem;
-            font-size: 12px;
-            color: var(--font);
-            box-sizing: border-box;
-        }
-        .profileSumbit {
-            text-align: center;
-            background-color: $primary-blue;
-            color: var(--font);
-            cursor: pointer;
-        }
-        .profileError {
-            color: tomato;
-            text-align: center;
-            font-weight: 500;
-            font-size: 12px;
-        }
-    }
+    max-width: 335px;
     .profileBtn {
         width: 100%;
-        background: tomato;
-        cursor: pointer;
-        border-radius: 30px;
-        border: none;
-        padding: 10px;
-        font-size: 12px;
-        text-align: center;
-        cursor: pointer;
+        background: $primary-red;
+        @include btn;
     }
 }
 
 /* Auth */
-
 .authWrapper {
     padding: 0 2rem;
+    max-width: 335px;
     .authForm {
         padding-top: 1rem;
-        .authInput {
-            display: block;
-            text-align: center;
-            width: 100%;
-            padding: 10px;
-            border-radius: 30px;
-            background-color: var(--bg);
-            border: 1px solid lightgray;
-            margin-bottom: 1rem;
-            font-size: 12px;
-            color: var(--font);
-            box-sizing: border-box;
-        }
-        .authSumbit {
-            text-align: center;
-            background-color: $primary-blue;
-            color: var(--font);
-            cursor: pointer;
-        }
-        .authError {
-            color: $primary-red;
-            text-align: center;
-            font-weight: 500;
-            font-size: 12px;
-        }
     }
     .authSwitch {
         display: block;
         width: 100%;
-        padding: 10px;
-        border-radius: 30px;
-        background-color: var(--bg);
-        border: 1px solid lightgray;
-        text-decoration: none;
-        color: $primary-blue;
-        text-align: center;
-        cursor: pointer;
-        margin-top: 10px;
-        margin-bottom: 50px;
-        font-size: 12px;
+        @include switch;
+        @include border;
+        @include btn;
     }
     .authBtns {
-        display: block;
         width: 100%;
+        display: block;
         .authBtn {
             width: 100%;
             background: lightgray;
             color: var(--font);
-            cursor: pointer;
-            border-radius: 30px;
-            border: none;
-            padding: 10px;
-            font-size: 12px;
-            text-align: center;
-            cursor: pointer;
-            svg {
-                margin-right: 1rem;
-            }
+            @include btn;
+            svg { margin-right: 1rem; }
         }
         .authBtn:last-child {
             margin-top: 10px;
         }
     }    
-}
-
-  /* AuthForm */
-  .iconWrapper {
-      display: flex;
-      justify-content: center;
+    /* AuthForm */
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
     .twitterIcon {
         color: $primary-blue;
-    }
-    
-  }
-
-
-/* footer */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 3rem;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    
-    padding: 0 1rem 0 1rem;
-    border-top: 1px solid var(--font);
-
-    ul {
-        display: flex;
-        width: 40%;
-        justify-content: flex-end;
-        li {
-            margin-right: 1rem;
         }
     }
 }
 
-/* Responsive */
-@include mobile {
-    .footer {
-        flex-direction: column;
-        justify-content: space-around;
-        height: 5rem;
-        ul {
-            display: flex;
-            justify-content: space-around;
-            li {
-                margin: 0
-            }
-        }
-    }
-    .wrapper {
-        height: calc(100vh - 8rem); // 3rem + 5rem
-    }
-    .homeWrapper,
-    .authWrapper {
-        margin-bottom: 2rem;
-    }
-    
-}
-@include tablet {
 
-    .tweet,
-    .factoryInput,
-    #attach-file + label {
-        max-width: 335px;
-    }
-    
-    .footer {
-        flex-direction: row;
-    }
-}
-@include desktop {
-    .tweet,
-    .factoryInput,
-    #attach-file + label {
-        max-width: 335px;
-        
-    }
-    .footer {
-        flex-direction: row;
-    }
-}
-@include bigScreen  {
-    .tweet,
-    .factoryInput,
-    #attach-file + label {
-        max-width: 335px;
-    }
-    .footer {
-        flex-direction: row;
-    }
-}

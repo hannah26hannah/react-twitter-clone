@@ -1,0 +1,66 @@
+@import '_variable.scss';
+
+
+@include mobile {
+    .footer {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 5rem;
+        ul {
+            display: flex;
+            justify-content: space-around;
+            li { margin: 0 }
+        }
+    }
+    .wrapper {
+        height: calc(100vh - 8rem);
+    }
+    .homeWrapper,
+    .authWrapper {
+        margin-bottom: 2rem;
+    }
+}
+@include tablet {
+    .footer {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 5rem;
+        ul {
+            display: flex;
+            justify-content: space-around;
+            li { margin: 0 }
+        }
+    }
+    .wrapper {
+        height: calc(100vh - 8rem) !important; 
+    }
+    .homeWrapper,
+    .authWrapper {
+        margin-bottom: 2rem;
+    }
+    // .tweet,
+    // .factoryInput,
+    // .profileBtn,
+    // #attach-file + label {
+    //     max-width: 335px;
+    // }
+    // .footer { flex-direction: row; }
+}
+@include desktop {
+    .tweet,
+    .factoryInput,
+    .profileBtn,
+    #attach-file + label {
+        max-width: 335px;
+    }
+    .footer { flex-direction: row; }
+}
+@include bigScreen  {
+    .tweet,
+    .factoryInput,
+    .profileBtn,
+    #attach-file + label {
+        max-width: 335px;
+    }
+    .footer { flex-direction: row; }
+}
