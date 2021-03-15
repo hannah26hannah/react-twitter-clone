@@ -23,6 +23,10 @@ function App() {
             }
             setInit(true)
         })
+
+        window.addEventListener('scroll', () => {
+            console.log(window.scrollY)
+        })
         
     }, [])
 
@@ -37,7 +41,7 @@ function App() {
     }
     return (
         <>
-            {init ? <AppRouter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} userObj={userObj} refreshuser={refreshuser} /> : 'Initializing ...'}
+            {init ? <AppRouter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} userObj={userObj} refreshuser={refreshuser} /> : <h1 className='initial'>Initializing ...</h1>}
             <Footer />
         </>
     ) 

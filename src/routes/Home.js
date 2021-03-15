@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 const Home = ({ userObj }) => {
     const [tweets, setTweets] = useState([]);
-    
+
     const getMyTweets = async (e) => {
         await dbService.collection('tweets')
             .orderBy('createdAt', 'desc')
@@ -20,7 +20,7 @@ const Home = ({ userObj }) => {
     }, [])
 
     return(
-        <main className='homeWrapper'>
+        <main className='homeWrapper wrapper'>
             <TweetFactory userObj={userObj} />
             <section className='displayContainer'>
                 {tweets.map(tweet => 

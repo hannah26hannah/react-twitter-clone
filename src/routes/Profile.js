@@ -52,7 +52,7 @@ const Profile = ({ userObj, refreshuser, setIsLoggedIn }) => {
 
     
     return (
-    <div className='profileWrapper'>
+    <div className='profileWrapper wrapper'>
         <form onSubmit={onSubmit} className='profileContainer'>
             <input type='text' placeholder='Display Name' value={newDisplayName} onChange={onChange} className='profileInput' />
             <input type='submit' value='Update Profile' className='profileInput profileSumbit'/>

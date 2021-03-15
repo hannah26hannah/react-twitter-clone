@@ -22,8 +22,10 @@ const Auth = () => {
     }
 
     return (
-        <div className='authWrapper'>
-            <FontAwesomeIcon icon={faTwitter} size='3x' className='twitterIcon'/>
+        <div className='authWrapper wrapper'>
+            <div className='iconWrapper'>
+                <FontAwesomeIcon icon={faTwitter} size='3x' className='twitterIcon'/>
+            </div>
             <AuthForm error={error} setError={setError} />
             <div className='authBtns'>
                 <button className='authBtn' name='google' onClick={onSocialClick}>

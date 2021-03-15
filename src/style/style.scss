@@ -41,15 +41,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh
-    /* todo : darkMode */
+    height: 100vh;
 }
 
+.initial {
+    text-align: center;
+    font-size: larger;
+}
 button {
     background-color: white;
     color: black;
 }
-
 
 a {
     text-decoration: none;
@@ -60,7 +62,6 @@ form {
     width: 100%;
 }
 
-  
 input {
     all: unset;
     appearance: none;
@@ -79,14 +80,14 @@ input {
 
 /* Navigation */
 .Navigation {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 3rem;
     border-bottom: 1px solid white;
     width: 100%;
-    // background-color: yellowgreen;
     ul {
+        position: relative;
         height: 100%;
         padding: 0 1rem 0 1rem;
         display: flex;    
@@ -96,49 +97,62 @@ input {
     }
 }
 
-/* Home */
-.homeWrapper {
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+
+
+/* Common */
+.factoryInput {
+    display: inline-block;
+    text-align: center;
     width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 1rem;
+    font-size: 12px;
+    color: black;
+    box-sizing: border-box;
+}
+.factorySubmit {
+    text-align: center;
+    background-color: #04aaff;
+    color: white;
+    cursor: pointer;
+}
+.factoryCancle {
+    background-color: tomato;
+}
+
+#root {
+    margin: 0 auto;
+}
+
+/* Home */
+
+.wrapper {
+    width: 100vw;
     height: calc(100vh - 6rem);
+    padding: 3rem 2rem;
     
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-    padding: 1rem;
-    overflow: auto;
+    overflow-y: auto;
     .factoryContainer {
         display: flex;
         flex-direction: column;
-        .factoryInput {
-            display: inline-block;
-            width: 100%;
-            padding: 10px;
-            border-radius: 30px;
-            background-color: rgba(255, 255, 255, 1);
-            margin-bottom: 1rem;
-            font-size: 12px;
-            color: black;
-            box-sizing: border-box;
-        }
+        align-items: center;
+        width: 100%;
+        
         .factoryInput__container {
             display: flex;
             flex-direction: column;
-
-            .factorySubmit {
-                text-align: center;
-                background-color: #04aaff;
-                color: white;
-                cursor: pointer;
-            }
+            width: 100%;
+            align-items: center;
         }
+        
         .factoryAttachment__container {
             display: flex;
             flex-direction: column;
+            width: 100%;
+            align-items: center;
             #attach-file {
                 width: 0.1px;
                 height: 0.1px;
@@ -184,25 +198,74 @@ input {
 
         
     }
-    .displayContainer {}
+    .displayContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .tweet {
+            width: 100%;
+            .tweetContainer {
+                width: 100%;
+                background: white;
+                color: black;
+                border-radius: 30px;
+                padding: 10px;
+                margin-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding: 1rem;
+                .tweetEdit {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    .editInput {
+                        width: 100%;
+                        padding: 2px;
+                        border: 1px solid lightgray;
+                    }
+                }
+
+                .factoryImg {
+                    width: 90%;
+                    height: auto;
+                    border-radius: 30px;
+                    margin: 10px auto;
+                }
+                .factoryBtns {
+                    align-self: flex-end;
+                    .factoryBtn {
+                        border: none;
+                        border-radius: 50%;
+                        padding: 7px;
+                        width: 30px;
+                        height: 30px;
+                    }
+                    .editBtn {
+                        background-color: #04aaff;
+                        margin-right: 10px;
+                    }
+                    .deleteBtn {
+                        background-color: tomato;
+                    }
+                    
+                }
+            }
+        }
+        
+    }
 }
 
 
-/* Profile */
+ /* Profile */
 .profileWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 6rem);
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-    padding: 1rem;
     .profileContainer {
         .profileInput {
             display: block;
+            text-align: center;
             width: 100%;
             padding: 10px;
             border-radius: 30px;
@@ -237,22 +300,16 @@ input {
         cursor: pointer;
     }
 }
+
 /* Auth */
 
 .authWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 3rem);
-    margin-bottom: 3rem;
-    padding: 1rem;
+    padding: 0 2rem;
     .authForm {
         padding-top: 1rem;
         .authInput {
             display: block;
+            text-align: center;
             width: 100%;
             padding: 10px;
             border-radius: 30px;
@@ -309,28 +366,18 @@ input {
         .authBtn:last-child {
             margin-top: 10px;
         }
-    }
-      
-    
+    }    
 }
 
-
-
-  
   /* AuthForm */
-.twitterIcon {
-    color: #04aaff;
-}
-
-
-
-
-  
-
-  
-
-
-
+  .iconWrapper {
+      display: flex;
+      justify-content: center;
+    .twitterIcon {
+        color: #04aaff;
+    }
+    
+  }
 
 
 /* footer */
@@ -339,48 +386,55 @@ input {
     bottom: 0;
     left: 0;
     height: 3rem;
+    width: 100%;
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    
     padding: 0 1rem 0 1rem;
     border-top: 1px solid white;
-    width: 100%;
 
     ul {
         display: flex;
         width: 40%;
-        justify-content: space-around;
+        justify-content: flex-end;
+        li {
+            margin-right: 1rem;
+        }
     }
 }
 
+/* Responsive */
 @include mobile {
-    .homeWrapper,
-    .profileWrapper {
-        height: calc(100vh - 8rem);
-    }
-    .authWrapper {
-        height: calc(100vh - 5rem);
-    }
-    .homeWrapper,
-    .profileWrapper, 
-    .authWrapper
-    {
-        margin-bottom: 5rem;
-    }
-    
     .footer {
         flex-direction: column;
         justify-content: space-around;
         height: 5rem;
+        ul {
+            display: flex;
+            justify-content: space-around;
+            li {
+                margin: 0
+            }
+        }
     }
+    .wrapper {
+        height: calc(100vh - 8rem); // 3rem + 5rem
+    }
+    .homeWrapper,
+    .authWrapper {
+        margin-bottom: 2rem;
+    }
+    
 }
 @include tablet {
-    
+
+    .tweet,
     .factoryInput,
     #attach-file + label {
         max-width: 335px;
-        
     }
     
     .footer {
@@ -388,6 +442,7 @@ input {
     }
 }
 @include desktop {
+    .tweet,
     .factoryInput,
     #attach-file + label {
         max-width: 335px;
@@ -398,6 +453,7 @@ input {
     }
 }
 @include bigScreen  {
+    .tweet,
     .factoryInput,
     #attach-file + label {
         max-width: 335px;

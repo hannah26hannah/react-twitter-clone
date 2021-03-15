@@ -1,3 +1,5 @@
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dbService, storageService } from 'fBase';
 import React, { useState } from 'react';
 
@@ -32,24 +34,28 @@ const Tweet = ({tweetObj, isOwner}) => {
     return (
         <div className='tweet'>
             {editing ?
-            <>
-                <form onSubmit={onSubmit} className='container tweetEdit'>
-                    <input type='text' placeholder='Edit Your Tweet' value={newTweet} required onChange={onChangeEdit} className='formInput' />
-                    <input type='submit' value='Update' className='formBtn' />
+            <div className='tweetContainer'>
+                <form onSubmit={onSubmit} className='tweetEdit'>
+                    <input type='text' placeholder='Edit Your Tweet' value={newTweet} required onChange={onChangeEdit} className='factoryInput editInput' />
+                    <input type='submit' value='Update' className='factoryInput factorySubmit' />
+                    <input type='reset' value='Calcel' onClick={toggleEditing} className='factoryInput factoryCancle' />
                 </form>
-                <button onClick={toggleEditing} className='formBtn cancelBtn'>Calcel</button>
-            </> :
-            <>
+                
+                
+            </div> :
+            <div className='tweetContainer'>
                 <h4>{tweetObj.text}</h4>
                 {tweetObj.attachmentUrl && (
-                    <img src={tweetObj.attachmentUrl} alt='Profile' width='50px' height='50px' />
+                    <img className='factoryImg' src={tweetObj.attachmentUrl} alt='Profile' width='50px' height='50px' />
                 )}
                 {isOwner && 
-                <>
-                    <button onClick={toggleEditing}>Edit Tweet</button>
-                    <button onClick={onDeleteClick}>Delete Tweet</button>
-                </>}
-            </>
+                <div className='factoryBtns'>
+                    <button className='factoryBtn editBtn' onClick={toggleEditing} title='Edit Tweet'>
+                        <FontAwesomeIcon icon={faEdit} /></button>
+                    <button className='factoryBtn deleteBtn' onClick={onDeleteClick} title='Delete Tweet'>
+                        <FontAwesomeIcon icon={faTrash} /></button>
+                </div>}
+            </div>
             }
         </div>)
 }
