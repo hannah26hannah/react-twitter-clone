@@ -24,10 +24,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "style": "node-sass --watch src/style/style.scss src/style/style.css",
-    "predeploy" : "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy" : "npm run build && ren build docs",
+    "deploy": "gh-pages -d docs"
   },
   "eslintConfig": {
     "extends": [
