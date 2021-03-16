@@ -4,9 +4,11 @@ import Profile from 'routes/Profile';
 import Auth from '../routes/Auth';
 import Home from '../routes/Home';
 import Navigation from './Navigation';
+import { BrowserRouter } from 'react-router-dom';
 
 const AppRouter = ({refreshuser, isLoggedIn, userObj, setIsLoggedIn}) => {
     return (
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Router>
             {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
@@ -28,6 +30,7 @@ const AppRouter = ({refreshuser, isLoggedIn, userObj, setIsLoggedIn}) => {
                 }                
             </Switch>
         </Router>
+        </BrowserRouter>
     )
 }
 
