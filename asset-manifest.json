@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "https://hannah26hannah.github.io/react-twitter-clone/static/css/main.3962607c.chunk.css",
+    "main.css": "https://hannah26hannah.github.io/react-twitter-clone/static/css/main.8022f318.chunk.css",
     "main.js": "https://hannah26hannah.github.io/react-twitter-clone/static/js/main.3da213ad.chunk.js",
     "main.js.map": "https://hannah26hannah.github.io/react-twitter-clone/static/js/main.3da213ad.chunk.js.map",
     "runtime-main.js": "https://hannah26hannah.github.io/react-twitter-clone/static/js/runtime-main.23f5c4b1.js",
@@ -8,13 +8,13 @@
     "static/js/2.6d639ff8.chunk.js": "https://hannah26hannah.github.io/react-twitter-clone/static/js/2.6d639ff8.chunk.js",
     "static/js/2.6d639ff8.chunk.js.map": "https://hannah26hannah.github.io/react-twitter-clone/static/js/2.6d639ff8.chunk.js.map",
     "index.html": "https://hannah26hannah.github.io/react-twitter-clone/index.html",
-    "static/css/main.3962607c.chunk.css.map": "https://hannah26hannah.github.io/react-twitter-clone/static/css/main.3962607c.chunk.css.map",
+    "static/css/main.8022f318.chunk.css.map": "https://hannah26hannah.github.io/react-twitter-clone/static/css/main.8022f318.chunk.css.map",
     "static/js/2.6d639ff8.chunk.js.LICENSE.txt": "https://hannah26hannah.github.io/react-twitter-clone/static/js/2.6d639ff8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.23f5c4b1.js",
     "static/js/2.6d639ff8.chunk.js",
-    "static/css/main.3962607c.chunk.css",
+    "static/css/main.8022f318.chunk.css",
     "static/js/main.3da213ad.chunk.js"
   ]
 }
