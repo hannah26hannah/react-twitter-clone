@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import AppRouter from 'components/Router'
 import { authService } from 'fBase';
-import Footer from './Footer';
+import Footer from './components/Footer';
 
 function App() {
     const [init, setInit] = useState(false);
@@ -23,11 +23,6 @@ function App() {
             }
             setInit(true)
         })
-
-        window.addEventListener('scroll', () => {
-            console.log(window.scrollY)
-        })
-        
     }, [])
 
     const refreshuser = () => {

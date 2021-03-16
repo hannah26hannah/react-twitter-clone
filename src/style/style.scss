@@ -1,10 +1,10 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
-@import './navigation';
-@import './breakpoints';
-@import './footer';
 @import './variable';
-@import './responsive';
 @import './mixin';
+@import './breakpoints';
+@import './responsive';
+@import './navigation';
+@import './footer';
 
 
 html {

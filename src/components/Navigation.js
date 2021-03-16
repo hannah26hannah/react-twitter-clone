@@ -8,24 +8,15 @@ const Navigation = ({ userObj }) => {
     const toggleDarkMode = () => {
         setIsDark(prev => !prev);
         trans();
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'light')
-            console.log(isDark)
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark')
-            console.log(isDark)
-        }
-
+        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
     }
     const trans = () => {
         document.documentElement.classList.add('transition');
         window.setTimeout(() => {
             document.documentElement.classList.remove('transition')
-        }, 500)
-        
+        }, 500)   
     }
 
-    
     return (
         <nav className='Navigation'>
             <ul>
